@@ -9,6 +9,11 @@ def is_odd(a_number):
 
     Look into modulo division using the '%' operator as one way of doing this.
     """
+    if(a_number % 2 == 1):
+        return True
+    else:
+        return False
+
     pass
 
 
