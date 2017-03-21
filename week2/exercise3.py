@@ -28,6 +28,16 @@ def fix_it(moves=True, should_move=True):
     "Duct Tape"
     "No Problem"
     """
+    if (moves):
+        if (should_move):
+            return "No Problem"
+        else:
+            return "Duct Tape"
+    else:
+        if (should_move):
+            return "WD-40"
+        else:
+            return "No Problem"
     pass
 
 
@@ -38,6 +48,11 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
+    listOfStars = []
+    for x in range(10):
+        listOfStars.append("*")
+
+    return listOfStars
     pass
 
 
@@ -49,6 +64,14 @@ def star_map():
     if it's even. Reuse the is odd function that you've already written.
     E.g.: ["!", "*", "!", "*", "!", "*", "!", "*", "!", "*"]
     """
+    def starOrBang(index):
+        if is_odd(index):
+            return "*"
+        else:
+            return "!"
+
+    result = map(starOrBang, range(10))
+    return result
     pass
 
 
@@ -60,6 +83,11 @@ def loops_1c(number_of_items=5, symbol="#"):
     a string with exacly one symbol in it.
     E.g.: ['#', '#', '#', '#', '#']
     """
+    listOfUserItems = []
+    for i in range(number_of_items):
+        listOfUserItems.append(symbol)
+
+    return listOfUserItems
     pass
 
 
@@ -81,6 +109,11 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
+    starfield = []
+    for i in range(10):
+        starfield.append(loops_1a())
+
+    return starfield
     pass
 
 
@@ -105,6 +138,14 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
+    blockOfNumbers = []
+    for i in range(10):
+        numberList = []
+        for x in range(10):
+            numberList.append(str(i))
+        blockOfNumbers.append(numberList)
+
+    return blockOfNumbers
     pass
 
 
@@ -123,6 +164,14 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
+    blockOfNumbers2 = []
+    for i in range(10):
+        numberList = []
+        for x in range(10):
+            numberList.append(str(x))
+        blockOfNumbers2.append(numberList)
+
+    return blockOfNumbers2
     pass
 
 
@@ -148,6 +197,14 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
+    coordinatesList = []
+    for i in range(10):
+        rowList = []
+        for j in range(5):
+            rowList.append("(i{}, j".format(i) + str(j) + ")")
+        coordinatesList.append(rowList)
+
+    return coordinatesList
     pass
 
 
@@ -171,6 +228,14 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
+    wedgeList = []
+    for i in range(10):
+        variablesList = []
+        for x in range(i + 1):
+            variablesList.append(str(x))
+        wedgeList.append(variablesList)
+
+    return wedgeList
     pass
 
 
@@ -195,6 +260,16 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
+    pyramidList = []
+    for index in range(5):
+        stackList = []
+        for x in range(9):
+            if (5 - index - 2 < x and x < index + 5):
+                stackList.append("*")
+            else:
+                stackList.append(" ")
+        pyramidList.append(stackList)
+    return pyramidList
     pass
 
 
