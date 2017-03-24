@@ -201,7 +201,7 @@ def loops_5():
     for i in range(10):
         rowList = []
         for j in range(5):
-            rowList.append("(i{}, j".format(i) + str(j) + ")")
+            rowList.append("(i{i}, j{j})".format(i=i, j=j))
         coordinatesList.append(rowList)
 
     return coordinatesList
