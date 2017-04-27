@@ -26,22 +26,14 @@ you'll need to figure out for yourself what to do.
 
 from __future__ import division
 from __future__ import print_function
+import math
 
 
 # This is a terrible function. The rest of the functions in this file do a
 # much better job of what it's trying to do. Once you've has a little look,
 # move on, and eventually delete this function. (And this comment!)
 def do_bunch_of_bad_things():
-    print("Getting ready to start in 9")
-    print("Getting ready to start in 8")
-    print("Getting ready to start in 7")
-    print("Getting ready to start in 6")
-    print("Getting ready to start in 5")
-    print("Getting ready to start in 4")
-    print("Getting ready to start in 3")
-    print("Getting ready to start in 2")
-    print("Getting ready to start in 1")
-    print("Let's go!")
+    countdown("Getting ready to start in ", 9, 1, "Let's start!")
 
     triangle = {"base": 3, "height": 4}
     triangle["hypotenuse"] = triangle["base"]**2 + triangle["height"]**2
@@ -61,6 +53,9 @@ def do_bunch_of_bad_things():
 # return a lit of countdown messages, much like in the bad function above.
 # It should say something different in the last message.
 def countdown(message, start, stop, completion_message):
+    for i in range(start, stop, -1):
+        print(message + str(i))
+    print(completion_message)
     pass
 
 
@@ -74,31 +69,42 @@ def countdown(message, start, stop, completion_message):
 # The stub functions are made for you, and each one is tested, so this should
 # hand hold quite nicely.
 def calculate_hypotenuse(base, height):
+    hypotenuse = math.sqrt(base**2 + height**2)
+    return hypotenuse
     pass
 
 
 def calculate_area(base, height):
+    area = (base * height) / 2
+    return area
     pass
 
 
 def calculate_perimeter(base, height):
+    perimeter = base + height + calculate_hypotenuse
+    return(perimeter)
     pass
 
 
 def calculate_aspect(base, height):
-    pass
+    if height > base:
+        return "tall"
+    elif height == base:
+        return "equal"
+    else:
+        return "wide"
 
 
 # Make sure you reuse the functions you've already got
 # Don't reinvent the wheel
 def get_triangle_facts(base, height, units="mm"):
-    return {"area": None,
-            "perimeter": None,
-            "height": None,
-            "base": None,
-            "hypotenuse": None,
-            "aspect": None,
-            "units": None}
+    return {"area": calculate_area,
+            "perimeter": calculate_perimeter,
+            "height": height,
+            "base": base,
+            "hypotenuse": calculate_hypotenuse,
+            "aspect": calculate_aspect,
+            "units": units}
 
 
 # this should return a multi line string that looks a bit like this:
@@ -147,6 +153,18 @@ def tell_me_about_this_right_triangle(facts_dictionary):
                "This is a {aspect} triangle.\n")
 
     facts = pattern.format(**facts_dictionary)
+    height = facts_dictionary["height"]
+    base = facts_dictionary["base"]
+
+    if height > base:
+        ret = tall.format(**facts_dictionary)
+    elif height == base:
+        ret = equal.format(**facts_dictionary)
+    else:
+        ret = wide.format(**facts_dictionary)
+
+    ret = ret + "\n" + facts
+    return ret
 
 
 def triangle_master(base,
