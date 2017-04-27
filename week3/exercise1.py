@@ -92,13 +92,11 @@ def not_number_rejector():
     "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    message = "Enter a number: "
     while True:
         try:
-            number = int(raw_input(message))
+            number = int(raw_input("Enter a number: "))
         except ValueError:
             print("You did not enter a number!")
-            continue
         else:
             print("{} is fine.".format(number))
             return number

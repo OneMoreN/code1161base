@@ -32,7 +32,7 @@ def advancedGuessingGame():
     print("Enter two numers, low and high")
     lowerBound = not_number_rejector()
     upperBound = not_number_rejector()
-    while lowerBound >= upperBound:
+    while lowerBound >= upperBound - 1:
         print("Please enter another two numbers that are low and high.")
         lowerBound = not_number_rejector()
         upperBound = not_number_rejector()
