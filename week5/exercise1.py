@@ -172,11 +172,11 @@ def triangle_master(base,
                     return_diagram=False,
                     return_dictionary=False):
     if return_diagram and return_dictionary:
-        return None
+        return {'diagram': diagram, 'facts': dictionary}
     elif return_diagram:
-        return None
+        return diagram
     elif return_dictionary:
-        return None
+        return {'facts': dictionary}
     else:
         print("You're an odd one, you don't want anything!")
 
