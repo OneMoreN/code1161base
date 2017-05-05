@@ -150,12 +150,14 @@ def random_filler_text(number_of_words=200):
     import random
     paragraph = ""
     Dict = make_filler_text_dictionary()
-    while len(paragraph) < number_of_words:
+    for i in xrange(1, number_of_words, 1):
         i = random.randint(3, 7)
         x = random.randint(0, 2)
         word = Dict.get(i)
         paragraph = paragraph + word[x] + " "
-    return paragraph
+    paragraph = paragraph.rstrip()
+    nParagraph = paragraph.capitalize() + "."
+    return nParagraph
 
 
 def fast_filler(number_of_words=200):
