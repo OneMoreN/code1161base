@@ -28,13 +28,9 @@ def success_is_relative():
     # this depends on excecution context. Take a look at your CWD and remember
     # that it changes.
     # print(path, CWD)
-    path = "week1/pySuccessMessage.json"
-    mode = "r"
-    readFile = open(path, mode)
-    response = json.load(readFile)
-    message = """{message}"""
-    print(message.format(**response))
-    pass
+    readFile = open("week1/pySuccessMessage.json", "r")
+    return (readFile.read().strip())
+    readFile.close()
 
 
 def get_some_details():
@@ -97,7 +93,7 @@ def wordy_pyramid():
     """
     word_pyramid = []
     url = "http://www.setgetgo.com/randomword/get.php?len="
-    for i in range(3, 20, 2):
+    for i in range(3, 21, 2):
         f_url = url + str(i)
         res = requests.get(f_url)
         word_pyramid.append(res.text)
@@ -128,11 +124,12 @@ def wunderground():
     r = requests.get(url)
     the_json = json.loads(r.text)
     obs = the_json['current_observation']
+    obs2 = obs['display_location']
 
-    return {"state":           None,
-            "latitude":        None,
-            "longitude":       None,
-            "local_tz_offset": None}
+    return {"state":           obs2['state'],
+            "latitude":        obs['observation_location']['latitude'],
+            "longitude":       obs['observation_location']['longitude'],
+            "local_tz_offset": obs['local_tz_offset']}
 
 
 def diarist():
@@ -148,7 +145,18 @@ def diarist():
     TIP: remember to commit 'lasers.pew' and push it to your repo, otherwise
          the test will have nothing to look at.
     """
-    pass
+    gCode = open('week4/Trispokedovetiles(laser).gcode', 'r')
+    output = open('week4/lasers.pew', 'w')
+
+    count = 0
+
+    for x in gCode.readlines():
+        if "M10 P1" in x:
+            count = count + 1
+    output.write(str(count))
+    gCode.close()
+    output.close()
+
 
 if __name__ == "__main__":
     print([len(w) for w in wordy_pyramid()])

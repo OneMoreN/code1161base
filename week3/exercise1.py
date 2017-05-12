@@ -95,11 +95,10 @@ def not_number_rejector():
     while True:
         try:
             number = int(raw_input("Enter a number: "))
-        except ValueError:
-            print("You did not enter a number!")
-        else:
             print("{} is fine.".format(number))
             return number
+        except ValueError:
+            print("You did not enter a number!")
 
 
 def super_asker(low, high):
@@ -113,17 +112,14 @@ def super_asker(low, high):
     while True:
         try:
             number = int(raw_input(message))
-        except ValueError:
-            print("You did not enter a number!")
-            continue
-        else:
-            if (low <= number <= high):
+            if (low < number < high):
                 print("{} is fine.".format(number))
                 return number
             else:
                 print("This number is not between " + str(low) + " and "
                       + str(high))
-    pass
+        except ValueError:
+            print("You did not enter a number!")
 
 
 if __name__ == "__main__":

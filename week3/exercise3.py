@@ -33,15 +33,14 @@ def advancedGuessingGame():
     lowerBound = not_number_rejector()
     upperBound = not_number_rejector()
     while lowerBound >= upperBound - 1:
-        print("Please enter another two numbers that are low and high.")
-        lowerBound = not_number_rejector()
+        print("Please enter another upper bound")
         upperBound = not_number_rejector()
     print("OK then, a number between " + str(lowerBound) + " and "
           + str(upperBound))
     lowerBound = int(lowerBound)
     upperBound = int(upperBound)
 
-    actualNumber = random.randint(lowerBound, upperBound)
+    actualNumber = random.randint(lowerBound + 1, upperBound - 1)
 
     guessed = False
 

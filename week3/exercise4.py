@@ -28,25 +28,19 @@ def binary_search(low, high, actual_number):
       tests aren't that smart yet.)
     """
     guess = 0
-    lowNumber = low
-    highNumber = high
-    guessing = True
     tries = 0
-    print("You are looking for the number: " + str(actual_number))
-    while lowNumber <= highNumber and guessing:
-        guess = int((lowNumber + highNumber) / 2)
-        tries += 1
-        print("You guessed the number: " + str(guess))
+    while True:
+        guess = int((low + high) / 2)
         if guess == actual_number:
-            print("You guessed the correct number: " + str(actual_number)
-                  + "\nIn this amount of steps: " + str(tries))
-            guessing = False
+            guess = {"guess": guess, "tries": tries}
+            return guess
         else:
-            if actual_number < guess:
-                highNumber = guess - 1
+            if guess > actual_number:
+                high = guess
+                tries += 1
             else:
-                lowNumber = guess + 1
-    pass
+                low = guess
+                tries += 1
 
 
 if __name__ == "__main__":

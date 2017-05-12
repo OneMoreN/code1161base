@@ -53,8 +53,8 @@ def do_bunch_of_bad_things():
 # return a lit of countdown messages, much like in the bad function above.
 # It should say something different in the last message.
 def countdown(message, start, stop, completion_message):
-    for i in range(start, stop, -1):
-        print(message + str(i))
+    for i in xrange(start, stop - 1, -1):
+        print(message + " " + str(i))
     print(completion_message)
     pass
 
@@ -199,11 +199,25 @@ def wordy_pyramid():
 
 
 def get_a_word_of_length_n(length):
-    pass
+    import requests
+    baseURL = "http://www.setgetgo.com/randomword/get.php?len="
+    url = baseURL + str(length)
+    r = requests.get(url)
+    message = r.text
+    return message
 
 
 def list_of_words_with_lengths(list_of_lengths):
-    pass
+    import requests
+    baseURL = "http://www.setgetgo.com/randomword/get.php?len="
+    listOfWords = []
+    end = len(list_of_lengths)
+    for i in range(0, end, 1):
+        url = baseURL + str(list_of_lengths[i])
+        r = requests.get(url)
+        message = r.text
+        listOfWords.append(message)
+    return listOfWords
 
 
 if __name__ == "__main__":
