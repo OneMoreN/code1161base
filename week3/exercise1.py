@@ -92,13 +92,15 @@ def not_number_rejector():
     "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    while True:
+    tryAgain = True
+    while tryAgain is True:
+        tryAgain = False
         try:
             number = int(raw_input("Enter a number: "))
-            print("{} is fine.".format(number))
-            return number
-        except ValueError:
-            print("You did not enter a number!")
+        except Exception:
+            print("Enter an actual number")
+            tryAgain = True
+    return number
 
 
 def super_asker(low, high):
@@ -109,17 +111,21 @@ def super_asker(low, high):
     """
     message = "Enter a Numer between {low} and {high}: ".format(low=low,
                                                                 high=high)
-    while True:
+    tryAgain = True
+    while tryAgain is True:
+        tryAgain = False
         try:
             number = int(raw_input(message))
             if (low < number < high):
                 print("{} is fine.".format(number))
-                return number
             else:
                 print("This number is not between " + str(low) + " and "
                       + str(high))
-        except ValueError:
+                tryAgain = True
+        except Exception:
             print("You did not enter a number!")
+            tryAgain = True
+    return number
 
 
 if __name__ == "__main__":
