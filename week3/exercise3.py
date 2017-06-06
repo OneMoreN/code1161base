@@ -28,13 +28,14 @@ def advancedGuessingGame():
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
+    message = "Enter a number: "
     print("\nwelcome to the guessing game!")
     print("Enter two numers, low and high")
-    lowerBound = not_number_rejector()
-    upperBound = not_number_rejector()
+    lowerBound = not_number_rejector(message)
+    upperBound = not_number_rejector(message)
     while lowerBound >= upperBound - 1:
         print("Please enter another upper bound")
-        upperBound = not_number_rejector()
+        upperBound = not_number_rejector(message)
     print("OK then, a number between " + str(lowerBound) + " and "
           + str(upperBound))
     lowerBound = int(lowerBound)
